@@ -1,0 +1,15 @@
+﻿
+<div class="modal-header" ng-class="{modalError : !params.isDone}">
+    <button type="button" ng-click="cancel()" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+    <h3 ng-if="params.isDone" class="modal-title" ng-bind="params.title"></h3>
+    <h3 ng-if="!params.isDone" class="modal-title" style="color:red">{{params.errTitle}}</h3>
+</div>
+<div class="modal-body">
+    <p ng-if="params.isDone">{{params.msg}}</p>
+    <p ng-if="!params.isDone">{{params.errMsg}}</p>
+</div>
+<div class="modal-footer" ng-class="{modalError : !params.isDone}">
+    <br ng-if="!params.isDone">
+    <button ng-if="params.isDone" class="btn btn-primary" ng-click="ok()">OK</button>
+    <button ng-if="params.isDone" class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

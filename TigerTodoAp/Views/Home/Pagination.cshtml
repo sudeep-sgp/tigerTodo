@@ -1,0 +1,24 @@
+﻿
+<div style="position: absolute;top: 58px;width:100%;margin: 0;">
+    <div class="col-md-6">
+        <!-- <input type="text" class="form-control" ng-model="todo.filterbyName" placeholder="Type your filter query here...">-->
+    </div>
+    <div class="col-sm-6">
+        <!--{{ $data | filter:{"isSelected": true} }}-->
+        <!--<div class="pull-right"><a class="btn black icn-only"  title="Refresh Logs"  style="padding: 4px 8px !important; margin-left:6px !important" ng-click="todoTblParams.reload();" ng-hide="tableParams.total()==0"><i class="icon-refresh"></i></a></div>-->
+
+        <ul class="ng-cloak pagination pull-right" style="margin:0">
+            <!-- ng-show="$parent.pages.length >0" -->
+            <li class="disabled active">
+                <span>
+                    {{ params.page()==1 ? params.page() : (params.page()-1)*params.count()+1}}&nbsp;&rarr;&nbsp;{{ params.page() == $parent.pages.length-2  ? params.total()  : params.total() < 5 ? params.total() : (params.page()*params.count()) }} of {{params.total()}}
+                </span>
+            </li>
+            <li ng-class="{'disabled':!page.active && params.page()!=page.number, 'prev':page.type==='prev', 'next':page.type==='next', 'active':params.page()===page.number}" ng-repeat="page in pages track by $index" ng-switch="page.type">
+                <a ng-switch-when="prev" ng-click="params.page(page.number);$event.preventDefault();" href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a ng-switch-when="next" ng-click="params.page(page.number);$event.preventDefault();" href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-right"></span> </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
